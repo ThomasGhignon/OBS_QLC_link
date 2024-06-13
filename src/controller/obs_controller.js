@@ -1,5 +1,5 @@
 import OBSWebSocket from "obs-websocket-js";
-import emitter from "../event_emitter.js";
+import emitter from "../event/event_emitter.js";
 
 export default class ObsController {
     constructor(ip, port) {
@@ -10,8 +10,9 @@ export default class ObsController {
     }
 
     init() {
-        this.connection().then(r => {
+        this.connection().then(response => {
             console.log('OBS Websocket :: CONNECTED')
+            return response
         })
 
         this.connectionBtn = document.querySelector('#connection-btn');

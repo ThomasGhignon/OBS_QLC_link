@@ -1,4 +1,4 @@
-import emitter from "../event_emitter.js";
+import emitter from "../event/event_emitter.js";
 import Scene from "../enum/scene.js";
 
 export default class QlcController {
@@ -11,8 +11,9 @@ export default class QlcController {
     }
 
     init() {
-        this.connect().then(r => {
+        this.connect().then(response => {
             console.log('QLC Websocket :: CONNECTED')
+            return response
         })
 
         this.functionsListBtn = document.querySelector('#functions-list-btn');
@@ -87,7 +88,9 @@ export default class QlcController {
             const sceneInfo = Scene[scene.sceneName]
             if (!sceneInfo) throw new Error('sceneInfo not found')
             this.disableAllScenes(sceneInfo.id)
-            this.sendCommand('setFunctionStatus', { id: sceneInfo.id, status: 1 }).then(response => {})
+            this.sendCommand('setFunctionStatus', { id: sceneInfo.id, status: 1 }).then(response => {
+                return response;
+            })
         } catch (error) {
             console.error('switchScene error:', error);
         }
