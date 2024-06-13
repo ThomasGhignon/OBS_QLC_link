@@ -1,16 +1,42 @@
 # 🚀 Getting started with OBS QLC+ Link
 
-### `develop`
+## `Configuration`
 
-Start the app
+### `OBS`
 
+#### Active Websocket server
+1. Go to : `Tools` &rarr; `Websocket server parameters`
+2. Uncheck the box `use authentication`
+3. retrieve `port` and `ip` information
+
+Update your OBS Websocket connection parameters
+
+```js
+const obsWebSocket = new ObsController('OBS websocket ip', 'OBS websocket port')
 ```
-npm run dev
+
+### `QLC+`
+
+#### Active Websocket server
+
+Launch QLC+ through terminal with Web Access :
+
+#### Mac
+
+```bash
+open /Applications/QLC+.app/Contents/MacOS/qlcplus --web
 ```
+
+By default, QLC+ use this address :
+```js
+const qlcWebSocket = new QlcController('ws://localhost:9999/qlcplusWS');
+```
+
+### `References`
 
 Update the `scene.json` file with your OBS scenes name related to your QLC+ functions name
 
-Example : 
+Example :
 
 ```json
 [
@@ -25,4 +51,12 @@ Example :
     "id": 1
   }
 ]
+```
+
+## `develop`
+
+Start the app
+
+```
+npm run dev
 ```
