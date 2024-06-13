@@ -5,7 +5,7 @@
 Start the app
 
 ```
-npm run develop
+npm run dev
 ```
 
 Update the `scene.json` file with your OBS scenes name related to your QLC+ functions name
