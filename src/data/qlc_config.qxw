@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Workspace>
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="FunctionManager">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.13.1</Version>
+  <Author>Thomas Ghignon</Author>
+ </Creator>
+ <Engine>
+  <InputOutputMap>
+   <BeatGenerator BeatType="Disabled" BPM="0"/>
+   <Universe Name="Default" ID="0">
+    <Input Plugin="ArtNet" UID="127.0.0.1" Line="0" Profile="Generic MIDI"/>
+    <Output Plugin="DMX USB" UID="FT232R USB UART (S/N: A5006JIV)" Line="0">
+     <PluginParameters UniverseChannels="24"/>
+    </Output>
+   </Universe>
+  </InputOutputMap>
+  <Fixture>
+   <Manufacturer>lightmaXX</Manufacturer>
+   <Model>Vega par cob</Model>
+   <Mode>Config</Mode>
+   <ID>0</ID>
+   <Name>Vega par cob</Name>
+   <Universe>0</Universe>
+   <Address>0</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>lightmaXX</Manufacturer>
+   <Model>Vega par cob</Model>
+   <Mode>Config</Mode>
+   <ID>1</ID>
+   <Name>Vega par cob</Name>
+   <Universe>0</Universe>
+   <Address>6</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>LED Par 56</Model>
+   <Mode>6 Channel</Mode>
+   <ID>2</ID>
+   <Name>LED Par 56</Name>
+   <Universe>0</Universe>
+   <Address>12</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>LED Par 56</Model>
+   <Mode>6 Channel</Mode>
+   <ID>3</ID>
+   <Name>LED Par 56</Name>
+   <Universe>0</Universe>
+   <Address>18</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Function ID="0" Type="Scene" Name="NO-LIGHT">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="1" Type="Scene" Name="TO-BLUE">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,255,1,0,2,0,3,255,4,0,5,0</FixtureVal>
+   <FixtureVal ID="1">0,255,1,0,2,0,3,255,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="2" Type="Scene" Name="TO-RED">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="1">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="4" Type="Scene" Name="big-spot-1-BLUE">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="2">0,0,1,0,2,255,3,0,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="5" Type="Scene" Name="big-spot-2-BLUE">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">0,0,1,0,2,255,3,0,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="6" Type="Chaser" Name="ALTERNATE-BIG">
+   <Speed FadeIn="150" FadeOut="150" Duration="1300"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="PerStep"/>
+   <Step Number="0" FadeIn="150" Hold="0" FadeOut="150">4</Step>
+   <Step Number="1" FadeIn="150" Hold="0" FadeOut="100">5</Step>
+  </Function>
+  <Function ID="7" Type="Scene" Name="mini-spot-1-RED" Path="UNIQUE">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="8" Type="Scene" Name="mini-spot-2-RED" Path="UNIQUE">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="10" Type="Collection" Name="QUIZZ-QUESTION">
+   <Step Number="0">6</Step>
+   <Step Number="1">14</Step>
+  </Function>
+  <Function ID="11" Type="Scene" Name="STROBE-mini">
+   <Speed FadeIn="500" FadeOut="500" Duration="0"/>
+   <FixtureVal ID="0">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="1">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="13" Type="Scene" Name="MINI-QUIZZ-FLASH-Scene" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="14" Type="Sequence" Name="MINI-QUIZZ-FLASH" BoundScene="13">
+   <Speed FadeIn="0" FadeOut="0" Duration="1000"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="PerStep"/>
+   <Step Number="0" FadeIn="200" Hold="100" FadeOut="0" Values="18">0:0,255,1,255:1:0,255,1,255:2:0,255</Step>
+   <Step Number="1" FadeIn="200" Hold="900" FadeOut="200" Values="18">0:0,255:1:0,255,1,255</Step>
+  </Function>
+ </Engine>
+ <VirtualConsole>
+  <Frame Caption="">
+   <Appearance>
+    <FrameStyle>None</FrameStyle>
+    <ForegroundColor>Default</ForegroundColor>
+    <BackgroundColor>Default</BackgroundColor>
+    <BackgroundImage>None</BackgroundImage>
+    <Font>Default</Font>
+   </Appearance>
+  </Frame>
+  <Properties>
+   <Size Width="1920" Height="1080"/>
+   <GrandMaster ChannelMode="Intensity" ValueMode="Reduce" SliderMode="Normal"/>
+  </Properties>
+ </VirtualConsole>
+ <SimpleDesk>
+  <Engine/>
+ </SimpleDesk>
+</Workspace>
