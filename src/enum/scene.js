@@ -2,9 +2,8 @@ import data from '../data/scene.json'
 
 const Scene = {};
 data.forEach((scene, index) => {
-    Scene[`${scene.obs}`] = {
-        qlc: scene.qlc,
-        id: scene.id
+    Scene[`${scene.obs_id}`] = {
+        id: scene.qlc_id
     };
 });
 

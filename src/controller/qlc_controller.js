@@ -11,19 +11,14 @@ export default class QlcController {
     }
 
     init() {
-        this.connect().then(response => {
-            console.log('QLC Websocket :: CONNECTED')
-            return response
-        })
+        this.connection()
+        this.setListener()
 
         this.functionsListBtn = document.querySelector('#functions-list-btn');
-        this.functionsListBtn.addEventListener('click', () => this.getFunctionsList())
-        emitter.on('sceneChanged', (scene) => {
-            this.switchScene(scene)
-        });
+        this.functionsListBtn.addEventListener('click', () => this.getFunctionsList(true))
     }
 
-    async connect() {
+    async connection() {
         try {
             this.instance = new WebSocket(this.url);
 
@@ -32,8 +27,17 @@ export default class QlcController {
             this.instance.onclose = this.onClose.bind(this);
             this.instance.onerror = this.onError.bind(this);
         } catch (error) {
-            console.error('WebSocket initialization error:', error);
+            console.log('WebSocket initialization error:', error);
         }
+    }
+
+    setListener() {
+        emitter.on('sceneChanged', (scene) => {
+            this.switchScene(scene)
+        })
+        emitter.on('transitionStarted', () => {
+            this.disableAllScenes()
+        })
     }
 
     onOpen(event) {
@@ -71,12 +75,15 @@ export default class QlcController {
         });
     }
 
-    getFunctionsList() {
+    getFunctionsList(log) {
         this.sendCommand('getFunctionsList').then(response => {
             const result = {};
             for (let i = 2; i < response.length; i += 2) {
                 result[response[i + 1]] = response[i];
             }
+
+            if (log) console.log(result)
+
             return result;
         }).catch(error => {
             console.error('getFunctionsList error:', error);
@@ -84,8 +91,9 @@ export default class QlcController {
     }
 
     switchScene(scene) {
+        console.log(scene)
         try {
-            const sceneInfo = Scene[scene.sceneName]
+            const sceneInfo = Scene[scene.sceneUuid]
             if (!sceneInfo) throw new Error('sceneInfo not found')
             this.disableAllScenes(sceneInfo.id)
             this.sendCommand('setFunctionStatus', { id: sceneInfo.id, status: 1 }).then(response => {

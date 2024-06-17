@@ -10,13 +10,14 @@ export default class ObsController {
     }
 
     init() {
-        this.connection().then(response => {
-            console.log('OBS Websocket :: CONNECTED')
-            return response
-        })
+        this.connection()
+        this.setListener()
 
         this.connectionBtn = document.querySelector('#connection-btn');
         this.connectionBtn.addEventListener('click', () => this.connection())
+
+        this.scenesListBtn = document.querySelector('#obs-scene-list-btn');
+        this.scenesListBtn.addEventListener('click', () => this.getSceneList(true))
     }
 
     async connection() {
@@ -26,23 +27,28 @@ export default class ObsController {
                 negotiatedRpcVersion
             } = await this.instance.connect(`ws://${this.ip}:${this.port}`);
             console.log(`Connected to server ${obsWebSocketVersion} (using RPC ${negotiatedRpcVersion})`)
-
-            await this.setListener()
         } catch (error) {
-            console.error('Failed to connect', error.code, error.message);
+            console.log('Failed to connect', error.code, error.message);
         }
     }
 
-    async setListener() {
+    setListener() {
         this.instance.on('CurrentProgramSceneChanged', this.onCurrentSceneChanged);
+        this.instance.on('SceneTransitionStarted', this.onSceneTransitionStarted);
     }
 
-    async getSceneList() {
+    async getSceneList(log) {
         const data = await this.instance.call("GetSceneList");
-        console.log(data)
+        if(log) console.log(data)
+        return data
     }
 
     onCurrentSceneChanged(event) {
+        console.log('Scene : ' + event.sceneName)
         emitter.emit('sceneChanged', event)
+    }
+    onSceneTransitionStarted(event) {
+        console.log('Transition : ' + event.transitionName)
+        emitter.emit('transitionStarted', event)
     }
 }
