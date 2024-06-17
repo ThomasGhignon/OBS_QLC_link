@@ -24,7 +24,7 @@ Launch QLC+ through terminal with Web Access :
 #### Mac
 
 ```bash
-open /Applications/QLC+.app/Contents/MacOS/qlcplus --web
+/Applications/QLC+.app/Contents/MacOS/qlcplus --web
 ```
 
 By default, QLC+ use this address :
@@ -57,6 +57,6 @@ Example :
 
 Start the app
 
-```
+```bash
 npm run dev
 ```
