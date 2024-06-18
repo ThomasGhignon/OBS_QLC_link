@@ -108,7 +108,7 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="3">2,255</FixtureVal>
   </Function>
-  <Function ID="10" Type="Collection" Name="QUIZZ">
+  <Function ID="10" Type="Collection" Name="BLUE-RED-STROBE">
    <Step Number="0">6</Step>
    <Step Number="1">7</Step>
   </Function>
