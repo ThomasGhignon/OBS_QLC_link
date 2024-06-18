@@ -136,7 +136,7 @@
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
   </Function>
-  <Function ID="15" Type="Collection" Name="BITE">
+  <Function ID="15" Type="Collection" Name="PURPLE">
    <Step Number="0">17</Step>
    <Step Number="1">18</Step>
   </Function>
@@ -155,16 +155,36 @@
    <FixtureVal ID="1">0,255,1,255,2,0,3,180</FixtureVal>
    <FixtureVal ID="2">0,255,1,255,2,0,3,180</FixtureVal>
   </Function>
-  <Function ID="19" Type="Collection" Name="PIXEL">
+  <Function ID="19" Type="Collection" Name="YELLOW">
    <Step Number="0">16</Step>
    <Step Number="1">3</Step>
   </Function>
-  <Function ID="20" Type="Collection" Name="BASIC">
+  <Function ID="20" Type="Collection" Name="BLUE-RED">
    <Step Number="0">4</Step>
    <Step Number="1">2</Step>
   </Function>
   <Function ID="21" Type="Collection" Name="BLACKOUT">
    <Step Number="0">11</Step>
+  </Function>
+  <Function ID="22" Type="Collection" Name="PURPLE-BLUE">
+   <Step Number="0">18</Step>
+   <Step Number="1">4</Step>
+  </Function>
+  <Function ID="23" Type="Collection" Name="RED-YELLOW">
+   <Step Number="0">2</Step>
+   <Step Number="1">3</Step>
+  </Function>
+  <Function ID="24" Type="Collection" Name="RED">
+   <Step Number="0">5</Step>
+   <Step Number="1">2</Step>
+  </Function>
+  <Function ID="25" Type="Collection" Name="YELLOW-RED">
+   <Step Number="0">16</Step>
+   <Step Number="1">5</Step>
+  </Function>
+  <Function ID="26" Type="Collection" Name="BLUE">
+   <Step Number="0">4</Step>
+   <Step Number="1">1</Step>
   </Function>
  </Engine>
  <VirtualConsole>

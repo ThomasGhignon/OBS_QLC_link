@@ -27,6 +27,12 @@ Launch QLC+ through terminal with Web Access :
 /Applications/QLC+.app/Contents/MacOS/qlcplus --web
 ```
 
+#### Linus
+
+```bash
+qlcplus --web
+```
+
 By default, QLC+ use this address :
 ```js
 const qlcWebSocket = new QlcController('ws://localhost:9999/qlcplusWS');
