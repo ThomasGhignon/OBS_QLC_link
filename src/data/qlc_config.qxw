@@ -11,9 +11,7 @@
    <BeatGenerator BeatType="Disabled" BPM="0"/>
    <Universe Name="Default" ID="0">
     <Input Plugin="ArtNet" UID="127.0.0.1" Line="0" Profile="Generic MIDI"/>
-    <Output Plugin="DMX USB" UID="FT232R USB UART (S/N: A5006JIV)" Line="0">
-     <PluginParameters UniverseChannels="30"/>
-    </Output>
+    <Output Plugin="DMX USB" UID="None" Line="0"/>
    </Universe>
   </InputOutputMap>
   <Fixture>
@@ -23,7 +21,7 @@
    <ID>0</ID>
    <Name>LED Par 56</Name>
    <Universe>0</Universe>
-   <Address>0</Address>
+   <Address>18</Address>
    <Channels>6</Channels>
   </Fixture>
   <Fixture>
@@ -33,7 +31,7 @@
    <ID>1</ID>
    <Name>Vega par cob</Name>
    <Universe>0</Universe>
-   <Address>6</Address>
+   <Address>0</Address>
    <Channels>6</Channels>
   </Fixture>
   <Fixture>
@@ -53,7 +51,7 @@
    <ID>3</ID>
    <Name>LED Par 56</Name>
    <Universe>0</Universe>
-   <Address>18</Address>
+   <Address>6</Address>
    <Channels>6</Channels>
   </Fixture>
   <Function ID="0" Type="Scene" Name="MINI-FLASH-SCENE" Hidden="True">
@@ -70,6 +68,11 @@
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <FixtureVal ID="1">0,255,1,255</FixtureVal>
    <FixtureVal ID="2">0,255,1,255</FixtureVal>
+  </Function>
+  <Function ID="3" Type="Scene" Name="BIG-YELLOW">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,255,1,255</FixtureVal>
+   <FixtureVal ID="3">0,255,1,255</FixtureVal>
   </Function>
   <Function ID="4" Type="Scene" Name="BIG-BLUE">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
@@ -133,12 +136,35 @@
    <RunOrder>Loop</RunOrder>
    <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
   </Function>
-  <Function ID="15" Type="Collection" Name="BITE"/>
-  <Function ID="18" Type="Chaser" Name="Nouveau chaser 18">
+  <Function ID="15" Type="Collection" Name="BITE">
+   <Step Number="0">17</Step>
+   <Step Number="1">18</Step>
+  </Function>
+  <Function ID="16" Type="Scene" Name="MINI-YELLOW">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <Direction>Forward</Direction>
-   <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+   <FixtureVal ID="1">0,255,1,255,2,255</FixtureVal>
+   <FixtureVal ID="2">0,255,1,255,2,255</FixtureVal>
+  </Function>
+  <Function ID="17" Type="Scene" Name="BIG-PURPLE">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">0,255,1,0,2,180</FixtureVal>
+   <FixtureVal ID="3">0,255,1,0,2,180</FixtureVal>
+  </Function>
+  <Function ID="18" Type="Scene" Name="MINI-PURPLE">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="1">0,255,1,255,2,0,3,180</FixtureVal>
+   <FixtureVal ID="2">0,255,1,255,2,0,3,180</FixtureVal>
+  </Function>
+  <Function ID="19" Type="Collection" Name="PIXEL">
+   <Step Number="0">16</Step>
+   <Step Number="1">3</Step>
+  </Function>
+  <Function ID="20" Type="Collection" Name="BASIC">
+   <Step Number="0">4</Step>
+   <Step Number="1">2</Step>
+  </Function>
+  <Function ID="21" Type="Collection" Name="BLACKOUT">
+   <Step Number="0">11</Step>
   </Function>
  </Engine>
  <VirtualConsole>
