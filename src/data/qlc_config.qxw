@@ -12,16 +12,16 @@
    <Universe Name="Default" ID="0">
     <Input Plugin="ArtNet" UID="127.0.0.1" Line="0" Profile="Generic MIDI"/>
     <Output Plugin="DMX USB" UID="FT232R USB UART (S/N: A5006JIV)" Line="0">
-     <PluginParameters UniverseChannels="24"/>
+     <PluginParameters UniverseChannels="30"/>
     </Output>
    </Universe>
   </InputOutputMap>
   <Fixture>
-   <Manufacturer>lightmaXX</Manufacturer>
-   <Model>Vega par cob</Model>
-   <Mode>Config</Mode>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>LED Par 56</Model>
+   <Mode>6 Channel</Mode>
    <ID>0</ID>
-   <Name>Vega par cob</Name>
+   <Name>LED Par 56</Name>
    <Universe>0</Universe>
    <Address>0</Address>
    <Channels>6</Channels>
@@ -37,11 +37,11 @@
    <Channels>6</Channels>
   </Fixture>
   <Fixture>
-   <Manufacturer>Showtec</Manufacturer>
-   <Model>LED Par 56</Model>
-   <Mode>6 Channel</Mode>
+   <Manufacturer>lightmaXX</Manufacturer>
+   <Model>Vega par cob</Model>
+   <Mode>Config</Mode>
    <ID>2</ID>
-   <Name>LED Par 56</Name>
+   <Name>Vega par cob</Name>
    <Universe>0</Universe>
    <Address>12</Address>
    <Channels>6</Channels>
@@ -56,67 +56,89 @@
    <Address>18</Address>
    <Channels>6</Channels>
   </Fixture>
-  <Function ID="0" Type="Scene" Name="NO-LIGHT">
+  <Function ID="0" Type="Scene" Name="MINI-FLASH-SCENE" Hidden="True">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="0">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
-   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0</FixtureVal>
   </Function>
-  <Function ID="1" Type="Scene" Name="TO-BLUE">
+  <Function ID="1" Type="Scene" Name="MINI-BLUE">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="0">0,255,1,0,2,0,3,255,4,0,5,0</FixtureVal>
    <FixtureVal ID="1">0,255,1,0,2,0,3,255,4,0,5,0</FixtureVal>
+   <FixtureVal ID="2">0,255,1,0,2,0,3,255,4,0,5,0</FixtureVal>
   </Function>
-  <Function ID="2" Type="Scene" Name="TO-RED">
+  <Function ID="2" Type="Scene" Name="MINI-RED">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="0">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
-   <FixtureVal ID="1">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="1">0,255,1,255</FixtureVal>
+   <FixtureVal ID="2">0,255,1,255</FixtureVal>
   </Function>
-  <Function ID="4" Type="Scene" Name="big-spot-1-BLUE">
+  <Function ID="4" Type="Scene" Name="BIG-BLUE">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="2">0,0,1,0,2,255,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="0">2,255</FixtureVal>
+   <FixtureVal ID="3">2,255</FixtureVal>
   </Function>
-  <Function ID="5" Type="Scene" Name="big-spot-2-BLUE">
+  <Function ID="5" Type="Scene" Name="BIG-RED">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="3">0,0,1,0,2,255,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="0">0,255</FixtureVal>
+   <FixtureVal ID="3">0,255</FixtureVal>
   </Function>
-  <Function ID="6" Type="Chaser" Name="ALTERNATE-BIG">
-   <Speed FadeIn="150" FadeOut="150" Duration="1300"/>
+  <Function ID="6" Type="Chaser" Name="BIG-ALTERNATE">
+   <Speed FadeIn="150" FadeOut="150" Duration="150"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="PerStep"/>
-   <Step Number="0" FadeIn="150" Hold="0" FadeOut="150">4</Step>
-   <Step Number="1" FadeIn="150" Hold="0" FadeOut="100">5</Step>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="150" Hold="100" FadeOut="150">8</Step>
+   <Step Number="1" FadeIn="150" Hold="0" FadeOut="150">9</Step>
   </Function>
-  <Function ID="7" Type="Scene" Name="mini-spot-1-RED" Path="UNIQUE">
+  <Function ID="7" Type="Sequence" Name="MINI-FLASH" BoundScene="0">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="0">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="PerStep" Duration="PerStep"/>
+   <Step Number="0" FadeIn="0" Hold="800" FadeOut="0" Values="4"/>
+   <Step Number="1" FadeIn="0" Hold="300" FadeOut="0" Values="4">1:0,255,1,255:2:0,255,1,255</Step>
   </Function>
-  <Function ID="8" Type="Scene" Name="mini-spot-2-RED" Path="UNIQUE">
+  <Function ID="8" Type="Scene" Name="BIG-1-BLUE" Path="UNIQUE">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="1">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="0">2,255</FixtureVal>
   </Function>
-  <Function ID="10" Type="Collection" Name="QUIZZ-QUESTION">
+  <Function ID="9" Type="Scene" Name="BIG-2-BLUE" Path="UNIQUE">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="3">2,255</FixtureVal>
+  </Function>
+  <Function ID="10" Type="Collection" Name="QUIZZ">
    <Step Number="0">6</Step>
-   <Step Number="1">14</Step>
+   <Step Number="1">7</Step>
   </Function>
-  <Function ID="11" Type="Scene" Name="STROBE-mini">
-   <Speed FadeIn="500" FadeOut="500" Duration="0"/>
-   <FixtureVal ID="0">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
-   <FixtureVal ID="1">0,255,1,255,2,0,3,0,4,0,5,0</FixtureVal>
-  </Function>
-  <Function ID="13" Type="Scene" Name="MINI-QUIZZ-FLASH-Scene" Hidden="True">
+  <Function ID="11" Type="Scene" Name="BLACKOUT">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
-   <FixtureVal ID="0">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
-   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
-   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="0"/>
+   <FixtureVal ID="3"/>
+   <FixtureVal ID="1"/>
+   <FixtureVal ID="2"/>
   </Function>
-  <Function ID="14" Type="Sequence" Name="MINI-QUIZZ-FLASH" BoundScene="13">
-   <Speed FadeIn="0" FadeOut="0" Duration="1000"/>
+  <Function ID="12" Type="Chaser" Name="QUIZZ" Path="DELAYED">
+   <Speed FadeIn="0" FadeOut="0" Duration="4294967294"/>
+   <Direction>Forward</Direction>
+   <RunOrder>SingleShot</RunOrder>
+   <SpeedModes FadeIn="PerStep" FadeOut="PerStep" Duration="PerStep"/>
+   <Step Number="0" FadeIn="0" Hold="2000" FadeOut="0">11</Step>
+   <Step Number="1" FadeIn="0" Hold="4294967294" FadeOut="0">10</Step>
+  </Function>
+  <Function ID="13" Type="Scene" Name="BIG-1-GRADIENT-SCENE" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+  </Function>
+  <Function ID="14" Type="Sequence" Name="BIG-1-GRADIENT" BoundScene="13">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>
-   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="PerStep"/>
-   <Step Number="0" FadeIn="200" Hold="100" FadeOut="0" Values="18">0:0,255,1,255:1:0,255,1,255:2:0,255</Step>
-   <Step Number="1" FadeIn="200" Hold="900" FadeOut="200" Values="18">0:0,255:1:0,255,1,255</Step>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
+  </Function>
+  <Function ID="15" Type="Collection" Name="BITE"/>
+  <Function ID="18" Type="Chaser" Name="Nouveau chaser 18">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="Common"/>
   </Function>
  </Engine>
  <VirtualConsole>
