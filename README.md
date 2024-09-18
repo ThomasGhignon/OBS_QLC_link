@@ -1,3 +1,6 @@
+![obsxqlc_cover](https://github.com/user-attachments/assets/60229e57-d53c-476c-85b1-9484e59c8e6d)
+
+
 # 🚀 Getting started with OBS QLC+ Link
 
 ## `Configuration`
